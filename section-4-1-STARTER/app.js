@@ -4,28 +4,19 @@ let vm = Vue.createApp({
       message: "Hello world!"
     }
   },
-  beforeCreate() {
-    console.log('beforeCreate called', this.message);
-  },
-  created() {
-    console.log('created called', this.message);
-  },
-  beforeMount() {
-    console.log('beforeMount called', this.$el);
-  },
-  mounted() {
-    console.log('mounted called', this.$el);
-  },
-  beforeUpdate() {
-    console.log('beforeUpdate called');
-  },
-  updated() {
-    console.log('updated called');
-  },
-})
+  template: `{{ message }}`
+}).mount('#appCompiled')
 
-setTimeout(mountApp, 3)
-
-function mountApp() {
-  vm.mount('#app')
-}
+let vm2 = Vue.createApp({
+  data() {
+    return {
+      message: "Hello world!"
+    }
+  },
+  render() {
+    return Vue.h(
+        'h1',
+        this.message
+    )
+  }
+}).mount('#appRuntime')
