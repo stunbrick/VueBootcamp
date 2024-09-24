@@ -1,5 +1,6 @@
 
 <template>
+  <p>Hey Text</p>
   <GREETS></GREETS>
 </template>
 
