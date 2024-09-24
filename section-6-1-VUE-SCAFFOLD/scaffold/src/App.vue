@@ -3,7 +3,7 @@
   <h3>Hey Text</h3>
 
   <GREETS :age="age"></GREETS>
-  <user :age="age" @age-change="updateAge"></user>
+  <user :age="age" @age-change="updateAge" :ageChangeFn="updateAgeCB"></user>
 </template>
 
 <script>
@@ -21,9 +21,12 @@ export default {
     }
   },
   methods: {
+    updateAgeCB(delta) {
+      this.age += delta
+    },
     updateAge(delta) {
       this.age += delta
-    }
+    },
   }
 }
 </script>
