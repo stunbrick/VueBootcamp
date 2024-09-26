@@ -1,7 +1,16 @@
 <template>
   <form>
-    <slot>NO FORM TO RENDER</slot>
+    <div class="help">
+      <slot name="help"></slot>
+    </div>
+    <div class="fields">
+      <slot name="fields"></slot>
+    </div>
+    <div class="buttons">
+      <slot name="buttons"></slot>
+    </div>
   </form>
+  <slot></slot>
 </template>
 <script setup lang="ts">
 </script>
