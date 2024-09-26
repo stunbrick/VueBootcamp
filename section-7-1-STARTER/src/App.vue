@@ -17,7 +17,8 @@
   @before-leave="beforeLeave"
   @leave="leave"
   @after-leave="afterLeave"
-  :css="false"
+  :css="true"
+  name="fade"
   >
     <h2 v-if="flag">Hey</h2>
   </transition>
@@ -37,13 +38,13 @@ export default {
     beforeEnter(el) {
       console.log("before entered: ", el);
     },
-    enter(el, done) {
+    enter(el) {
       console.log('enter', el);
-      const anim = el.animate([{ transform: "scale3d(0,0,0)"}, {}],
-          { duration: 1000, });
-      anim.onfinish = () => {
-        done();
-      }
+      //const anim = el.animate([{ transform: "scale3d(0,0,0)"}, {}],
+      //    { duration: 1000, });
+      //anim.onfinish = () => {
+      //  done();
+      //}
     },
     afterEnter(el) {
 
@@ -52,13 +53,13 @@ export default {
     beforeLeave(el) {
       console.log("before leave: ", el);
     },
-    leave(el, done) {
-      console.log('leave', el);
-      const anim = el.animate([{}, { transform: "scale3d(0,0,0)"}],
-          { duration: 1000, });
-      anim.onfinish = () => {
-        done();
-      }
+    leave(el) {
+      //console.log('leave', el);
+      //const anim = el.animate([{}, { transform: "scale3d(0,0,0)"}],
+      //    { duration: 1000, });
+      //anim.onfinish = () => {
+      //  done();
+      //}
     }
   }
 }
