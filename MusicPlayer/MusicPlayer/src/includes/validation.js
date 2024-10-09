@@ -38,7 +38,7 @@ export default {
 
                 const message = messages[ctx.rule.name] ? messages[ctx.rule.name] : `The field ${ctx.field} is required`;
                 return message;
-            }
+            },
         });
     },
 }

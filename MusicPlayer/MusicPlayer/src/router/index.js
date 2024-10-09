@@ -1,5 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from "@/views/HomeView.vue";
+import Manage from "@/views/ManageView.vue";
+import useUserStore from "@/stores/user";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +9,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: Home
     },
     {
       path: '/about',
@@ -16,8 +18,41 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/manage',
+      name: 'manage',
+      component: Manage,
+      alias: '/manage-music',
+      beforeEnter: (to, from, next) => {
+        next();
+      },
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: '/:catchAll(.*)*',
+      redirect: { name: 'home' },
+    },
+  ],
+  linkExactActiveClass: 'text-yellow-500',
+});
+router.beforeEach((to, from, next) => {
+  console.log('Global Guard');
+  console.log(to.meta);
+
+  if (!to.meta.requiresAuth) {
+    next();
+  } else {
+    const store = useUserStore();
+    if (store.userLoggedIn) {
+      next();
+    } else {
+      next({name: 'home'});
     }
-  ]
-})
+  }
+});
+
 
 export default router
