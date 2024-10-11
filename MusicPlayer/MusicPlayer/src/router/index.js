@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from "@/views/HomeView.vue";
 import Manage from "@/views/ManageView.vue";
 import useUserStore from "@/stores/user";
+import Song from '@/views/SongView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +31,11 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
       }
+    },
+    {
+      name: 'song',
+      path: '/song/:id',
+      component: Song,
     },
     {
       path: '/:catchAll(.*)*',
