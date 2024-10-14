@@ -1,0 +1,15 @@
+{
+  "home": {
+    "listen": "Luister na LEKKER Musiek!"
+  },
+  "song": {
+    "comment_count": "Geen kommentaar | Een ou se opinie | {count} kommentaar"
+  },
+  "register": {
+    "accept": "Ek Aanvaar die Musiek se {0}",
+    "tos": "Terme van Koop"
+  },
+  "manage": {
+    "my_songs": "My Liedjies"
+  }
+}
