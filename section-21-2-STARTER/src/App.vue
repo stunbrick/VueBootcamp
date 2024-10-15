@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <div class="scrollPosition"></div>
+    <div class="scrollPosition">{{ offset }}</div>
   </div>
 </template>
 
 <script>
+import mixin from "@/mixin";
 export default {
   name: "App",
+  mixins: [mixin],
 };
 </script>
 
@@ -18,7 +20,7 @@ export default {
 }
 
 .scrollPosition {
-  position: fix;
+  position: fixed;
   left: 10px;
   right: 10px;
 }
