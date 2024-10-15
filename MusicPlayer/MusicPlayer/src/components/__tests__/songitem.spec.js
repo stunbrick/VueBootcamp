@@ -36,7 +36,7 @@ describe('SongItem.vue', () => {
                 },
             }
         });
-        const compositionAuthor = wrapper.find('.text-grey-500');
-        expect(wrapper.attributes().id).toContain(`song-id-${song.docID}`);
+        const compositionAuthor = wrapper.find('.text-grey-50');
+        expect(wrapper.attributes().id).toBe(`song-id-${song.docID}`);
     });
 });
